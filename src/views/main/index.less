@@ -90,8 +90,9 @@
         .mobile-tab-wrap {
             width: 100%;
             height: 172px;
-            transition: all .3s;
+            transition: all .1s;
             border-top: 1px solid #eeeeee;
+            background-color: #f9f9f9;
             .tab {
                 position: relative;
                 width: 100%;
@@ -315,5 +316,23 @@
     }
     to {
         width: 70px;
+    }
+}
+
+
+.app-wrapper {
+    width: 100%;
+    transition: all 0.1s;
+    &.show-right-nav {
+        width: calc(100% - 320px);
+    }
+    &.pc {
+      margin-top: 90px;
+    }
+    &.mobile {
+        margin-top: 60px;
+      &.show-tabs {
+        margin-top: 232px;
+      }
     }
 }

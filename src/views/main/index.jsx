@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Routes } from '@/routes';
 import C from '@/store/provider';
 import { jElement, jClass, classNames } from '@/public/utils';
@@ -8,8 +9,8 @@ import HeaderTabView from './headerTabView/index';
 import licenseImg from '@/assets/images/license.png';
 import './index.less';
 
-import { Layout, BackTop } from 'antd';
 import { HomeOutlined, TagsOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons';
+import { Layout, BackTop } from 'antd';
 const { Header, Footer, Content } = Layout;
 
 function useHeight(size) {
@@ -96,7 +97,21 @@ function Main() {
     const height = useHeight(size);
 
     const [toggleLineData, changeToggle] = useState(lineStyle.normalLineData)
-    const [showMobileTabs, changeShowMobileTabs] = useState(true);
+    const [showMobileTabs, changeShowMobileTabs] = useState(false);
+
+    useEffect(() => {
+        changeToggle(showMobileTabs ? lineStyle.closeLineData : lineStyle.normalLineData)
+    }, [showMobileTabs])
+
+
+    const history = useHistory()
+    const currentPath = history.location.pathname;
+    function selectTab(tab) {
+        if (currentPath === tab.to) { return; }
+        history.push(tab.to);
+        changeShowMobileTabs(!showMobileTabs)
+    }
+
 
     return (
         <Layout>
@@ -149,7 +164,6 @@ function Main() {
                         jElement(
                             <div className="toggle" onClick={() => {
                                 changeShowMobileTabs(!showMobileTabs)
-                                changeToggle(showMobileTabs ? lineStyle.closeLineData : lineStyle.normalLineData)
                             }}>
                                 {
                                     toggleLineData.map((line, index) => 
@@ -172,8 +186,27 @@ function Main() {
                         )
                     }
                 </div>
+                {
+                    jElement(
+                        <div className='mobile-tab-wrap'>
+                            {
+                                tabs.map((tab, index) =>
+                                    <div key={index} className={classNames(['tab', jClass('active', currentPath === tab.to)])} onClick={() => {selectTab(tab)}}>
+                                        <i className='iconfont'>
+                                            { tab.iconComponent }
+                                        </i>
+                                        <span>{ tab.name }</span>
+                                    </div>
+                                )
+                            }
+                        </div>,
+                        size.width <= 768 && showMobileTabs
+                    )
+                }
             </Header>
-            <Content style={{ marginTop: height }}>
+            <Content
+                className={classNames(['app-wrapper', jClass('show-tabs', showMobileTabs), jClass('pc', size.width > 768), jClass('mobile', size.width <= 768)])}
+            >
                 <C.Provider value={{ screenWidth: size.width }}>
                     <Routes />
                 </C.Provider>
