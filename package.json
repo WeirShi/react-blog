@@ -9,7 +9,9 @@
     "@testing-library/user-event": "^12.1.10",
     "animate.css": "^4.1.1",
     "antd": "^4.8.5",
+    "axios": "^0.21.0",
     "nprogress": "^0.2.0",
+    "rc-queue-anim": "^1.8.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
@@ -43,6 +45,7 @@
   "devDependencies": {
     "babel-plugin-import": "^1.13.1",
     "customize-cra": "^1.0.0",
+    "dotenv-cli": "^4.0.0",
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
     "react-app-rewired": "^2.1.6"

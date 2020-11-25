@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from 'react';
 
-export function useDebounce(fn, wait = 300, dep= []) {
+export function useDebounce(fn, wait = 300, dep = []) {
     const { current } = useRef({ fn, timer: null });
     useEffect(() => {
         current.fn = fn;
@@ -13,5 +13,6 @@ export function useDebounce(fn, wait = 300, dep= []) {
         current.timer = setTimeout(() => {
             current.fn.call(this, ...args);
         }, wait)
-    }, [current, wait])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, dep)
 }

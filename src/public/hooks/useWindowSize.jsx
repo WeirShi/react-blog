@@ -4,15 +4,15 @@ import { useDebounce } from './useDebounce';
 export function useWindowSize() {
     const [size, setSize] = useState({
         width: document.documentElement.clientWidth,
-        height: document.documentElement.clientHeight
+        // height: document.documentElement.clientHeight
     });
 
     const onResize = useDebounce(() => {
         setSize({
             width: document.documentElement.clientWidth,
-            height: document.documentElement.clientHeight
+            // height: document.documentElement.clientHeight
         });
-    });
+    }, 300, [size]);
 
     useEffect(() => {
         window.addEventListener('resize', onResize);

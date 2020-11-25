@@ -1,0 +1,39 @@
+.tag {
+    color: #fff;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 10px;
+    background-color: #262a30;
+    font-size: 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &:hover {
+      background-color: lighten(#262a30, 20%);
+      &:before {
+        border-right: 12px solid lighten(#262a30, 20%);
+      }
+    }
+    &:before {
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 0;
+      height: 0;
+      content: "";
+      border-top: 11px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 12px solid #262a30;
+      transition: all 0.3s;
+      .iconfont {
+        font-size: 12px;
+      }
+    }
+  }

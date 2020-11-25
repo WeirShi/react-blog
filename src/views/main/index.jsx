@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Routes } from '@/routes';
+
 import C from '@/store/provider';
 import { jElement, jClass, classNames } from '@/public/utils';
 
@@ -210,7 +211,9 @@ function Main() {
                 className={classNames(['app-wrapper', jClass('show-tabs', showMobileTabs), jClass('pc', size.width > 768), jClass('mobile', size.width <= 768)])}
             >
                 <C.Provider value={{ screenWidth: size.width, showRightNav, changeShowRightNav }}>
-                    <Routes />
+                    <div className='inner'>
+                        <Routes />
+                    </div>
                 </C.Provider>
             </Content>
             <Footer>

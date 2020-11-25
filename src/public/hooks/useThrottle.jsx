@@ -1,6 +1,6 @@
 import { useRef, useEffect, useCallback } from 'react';
 
-export function useThrottle(fn, wait) {
+export function useThrottle(fn, wait = 300) {
     const { current } = useRef({ fn, timer: null });
     useEffect(function () {
       current.fn = fn;

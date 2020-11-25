@@ -326,6 +326,16 @@
     &.show-right-nav {
         width: calc(100% - 320px);
     }
+    .inner {
+        max-width: 1000px;
+        min-width: 320px;
+        margin: 0 auto;
+        padding: 0 10px;
+        // min-height: calc( - 120px);
+        min-height: 80vh;
+        -webkit-transition: width 0.3s;
+        transition: width 0.3s;
+    }
     &.pc {
       margin-top: 90px;
     }
@@ -334,5 +344,20 @@
       &.show-tabs {
         margin-top: 232px;
       }
+    }
+}
+
+.animate-route {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeRoute;
+}
+
+@keyframes fadeRoute {
+    from {
+        opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
 }
