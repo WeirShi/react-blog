@@ -98,6 +98,8 @@ function Main() {
 
     const [toggleLineData, changeToggle] = useState(lineStyle.normalLineData)
     const [showMobileTabs, changeShowMobileTabs] = useState(false);
+    const [showRightNav, changeShowRightNav] = useState(false);
+
 
     useEffect(() => {
         changeToggle(showMobileTabs ? lineStyle.closeLineData : lineStyle.normalLineData)
@@ -207,7 +209,7 @@ function Main() {
             <Content
                 className={classNames(['app-wrapper', jClass('show-tabs', showMobileTabs), jClass('pc', size.width > 768), jClass('mobile', size.width <= 768)])}
             >
-                <C.Provider value={{ screenWidth: size.width }}>
+                <C.Provider value={{ screenWidth: size.width, showRightNav, changeShowRightNav }}>
                     <Routes />
                 </C.Provider>
             </Content>
