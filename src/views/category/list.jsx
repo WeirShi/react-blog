@@ -16,8 +16,6 @@ function CategoryList(props) {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        let isOk = true;
-
         const fetchData = async () => {
             setLoading(true);
             const res = await FetchArticleListByCategoryOrTag({ type, id });
@@ -29,11 +27,6 @@ function CategoryList(props) {
             }
         }
         fetchData();
-
-        return (() => {
-            // eslint-disable-next-line no-unused-vars
-            isOk = false;
-        })
     }, [type, id])
 
     return (

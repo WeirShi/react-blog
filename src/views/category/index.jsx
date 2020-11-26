@@ -14,7 +14,6 @@ function Category() {
     const [tags, setTags] = useState([]);
 
     useEffect(() => {
-        let isOk = true;
         const fetchData = async () => {
             const promises = [
               FetchGetAllCategory(),
@@ -32,10 +31,6 @@ function Category() {
             }
         }
         fetchData();
-        return (() => {
-            // eslint-disable-next-line no-unused-vars
-            isOk = false;
-        })
     }, [])
 
 

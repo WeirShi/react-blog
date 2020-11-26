@@ -10,7 +10,7 @@ import {
     DoubleLeftOutlined, DoubleRightOutlined, CalendarOutlined,
     EyeOutlined, FolderOutlined, HeartOutlined
 } from '@ant-design/icons';
-import { FetchArticleDetail, FetchArticlePreOrNext } from '@/api';
+import { FetchArticleDetail, FetchArticlePreOrNext, FetchAddWatchTimes } from '@/api';
 import './index.less';
 
 
@@ -23,8 +23,7 @@ function ArticleDetail(props) {
     const [nextArticle, setNextArticle] = useState(null);
 
     useEffect(() => {
-        let isOk = true;
-        // 文章详情
+        // article detail
         const fetchData = async () => {
             setLoading(true);
             const res = await FetchArticleDetail({ id });
@@ -46,18 +45,26 @@ function ArticleDetail(props) {
             }
         }
         fetchPreOrNext();
-        return (() => {
-            // eslint-disable-next-line no-unused-vars
-            isOk = false;
-        })
-    }, [id])
+        // addWatchTime
+        const addWatchTimes = async () => {
+            await FetchAddWatchTimes({ id });
+        }
+        addWatchTimes();
+    }, [id]);
+
+    function addLikeTimes() {
+        if (article) {
+            const newArticle = Object.assign({}, article);
+            newArticle.like_times += 1;
+            setArticle(newArticle);
+        }
+    }
 
     function toPage(id, type) {
         history.push(
-            !type ? `/blog/article/${id}` : ''
+            !type ? `/blog/article/${id}` : `/blog/article/${type}/${id}`
         );
     }
-
 
     return (
         <div id="article-detail">
@@ -91,7 +98,7 @@ function ArticleDetail(props) {
                                     </p>
                                     •
                                     <p className="heart">
-                                        <HeartOutlined className="iconfont" />{ article && article.like_times}次点赞
+                                        <HeartOutlined className="iconfont" />{ article && article.like_times }次点赞
                                     </p>
                                 </div>
                                 <div className="article-description">{ article && article.description }</div>
@@ -110,7 +117,7 @@ function ArticleDetail(props) {
                             </div>
                             <div className="like-wrap">
                                 <p>如果我的文章对您有帮助！留下您的点赞吧~</p>
-                                <LikeBtn id={id} />
+                                <LikeBtn id={id} addLikeTimes={addLikeTimes} />
                             </div>
 
                             <div className="pre-next-wrap">

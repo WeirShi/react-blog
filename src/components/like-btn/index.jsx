@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { classNames, jClass } from '@/public/utils';
 import { useDebounce } from '@/public/hooks/useDebounce';
+import { FetchAddLikeTimes } from '@/api';
+import { message } from 'antd';
 import './index.less';
 
 
@@ -18,9 +20,19 @@ function LikeBtn(props) {
 
     const like = useDebounce(() => {
         if (active) { return; }
-        console.log('id', id);
+        addLikeTimes();
         changeActive(true);
     });
+
+    const addLikeTimes = async () => {
+        const { statusCode } = await FetchAddLikeTimes({ id });
+        if (statusCode === 0) {
+            message.success("感谢您的点赞~");
+            props.addLikeTimes();
+        } else {
+            message.error("Oops，请求出错了~");
+        }
+    }
 
 
     return (

@@ -27,7 +27,6 @@ function Home() {
     }
 
     useEffect(() => {
-        let isOk = true;
         const fetchData = async () => {
             setLoading(true);
             const res = await FetchGetArticleList({
@@ -43,10 +42,6 @@ function Home() {
             }
         }
         fetchData();
-        return () => {
-            // eslint-disable-next-line no-unused-vars
-            isOk = false;
-        }
     }, [current])
 
 

@@ -23,7 +23,6 @@ function Archive() {
     }
 
     useEffect(() => {
-        let isOk = true;
         const fetchData = async () => {
             setLoading(true);
             const res = await FetchGetArticleList({
@@ -51,10 +50,6 @@ function Archive() {
             }
         }
         fetchData();
-        return () => {
-            isOk = false;
-            console.log(isOk);
-        }
     }, [current])
     
 
