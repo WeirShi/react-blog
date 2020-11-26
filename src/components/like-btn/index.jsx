@@ -4,28 +4,6 @@ import { useDebounce } from '@/public/hooks/useDebounce';
 import './index.less';
 
 
-// function useLike(id) {
-//     const [active, changeActive] = useState(false);
-
-//     const onChangeLike = useDebounce(() => {
-//         console.log('id', id);
-//         console.log('active', active);
-//         if (active) { return; }
-//         changeActive(!active);
-//         setTimeout(() => {
-//             changeActive(!active);
-//             console.log('active11111', active);
-//         }, 2000)
-//     });
-
-
-//     return {
-//         active,
-//         onChangeLike
-//     };
-
-// }
-
 function LikeBtn(props) {
     const { id } = props;
     const [active, changeActive] = useState(false);

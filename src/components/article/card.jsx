@@ -6,12 +6,14 @@ import './card.less';
 
 
 function ArticleCard(props) {
-    const history = useHistory()
+    const history = useHistory();
     function readMore(id) {
         history.push(`/blog/article/${id}`);
     }
 
-    function toPage() {}
+    function toPage(id, type) {
+        history.push(`/blog/article/${type}/${id}`);
+    }
 
     return (
         <div id="article-card">

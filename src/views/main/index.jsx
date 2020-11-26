@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Routes } from '@/routes';
 
 import C from '@/store/provider';
@@ -93,7 +92,7 @@ const tabs = [
       }
 ];
 
-function Main() {
+function Main(props) {
     const size = useWindowSize();
     const height = useHeight(size);
 
@@ -106,12 +105,10 @@ function Main() {
         changeToggle(showMobileTabs ? lineStyle.closeLineData : lineStyle.normalLineData)
     }, [showMobileTabs])
 
-
-    const history = useHistory()
-    const currentPath = history.location.pathname;
+    const currentPath = props.history.location.pathname;
     function selectTab(tab) {
         if (currentPath === tab.to) { return; }
-        history.push(tab.to);
+        props.history.push(tab.to);
         changeShowMobileTabs(!showMobileTabs)
     }
 

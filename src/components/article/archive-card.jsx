@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { CalendarOutlined, FolderOutlined, EyeOutlined, HeartOutlined } from '@ant-design/icons';
 import { jElement } from '@/public/utils';
 import Tag from '../tag';
@@ -5,9 +6,13 @@ import './archive-card.less';
 
 
 function ArchiveCard(props) {
-
-    function readMore() {}
-    function toPage() {}
+    const history = useHistory();
+    function readMore(id) {
+        history.push(`/blog/article/${id}`);
+    }
+    function toPage(id, type) {
+        history.push(`/blog/article/${type}/${id}`);
+    }
 
     return (
         <div className="article-card" onClick={() => { readMore(props.id) }}>
