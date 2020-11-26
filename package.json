@@ -10,6 +10,8 @@
     "animate.css": "^4.1.1",
     "antd": "^4.8.5",
     "axios": "^0.21.0",
+    "highlight.js": "^10.4.0",
+    "marked": "^1.2.5",
     "nprogress": "^0.2.0",
     "rc-queue-anim": "^1.8.5",
     "react": "^17.0.1",

@@ -99,17 +99,19 @@
         font-weight: bold;
         .pre-wrap {
             padding-right: 10px;
-            display: flex;
-            align-items: center;
+            // display: flex;
+            // align-items: center;
+            text-align: left;
             .iconfont {
                 margin-right: 4px;
             }
         }
         .next-wrap {
             padding-left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
+            text-align: right;
+            // display: flex;
+            // align-items: center;
+            // justify-content: flex-end;
             .iconfont {
                 margin-left: 4px;
             }
@@ -119,6 +121,14 @@
           flex: 1;
           cursor: pointer;
           -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          height: 24px;
+          line-height: 24px;
+          overflow : hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+
           &:hover {
             color: lighten(#555555, 20%);
           }

@@ -3,6 +3,7 @@ import Loading from '@/components/loading';
 import NoData from '@/components/no-data';
 import Tag from '@/components/tag';
 import LikeBtn from '@/components/like-btn';
+import MdPreview from '@/components/md-preview';
 import noDataImg from '@/assets/images/no-article.svg';
 import { jElement } from '@/public/utils';
 import { message } from 'antd';
@@ -103,6 +104,9 @@ function ArticleDetail(props) {
                                 </div>
                                 <div className="article-description">{ article && article.description }</div>
                             </div>
+                            
+                            <MdPreview content={article && article.html_content} />
+
                             <div className="tags">
                                 {
                                     article && article.tags.map((tag, index) =>
