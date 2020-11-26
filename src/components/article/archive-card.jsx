@@ -1,31 +1,25 @@
-
 import { CalendarOutlined, FolderOutlined, EyeOutlined, HeartOutlined } from '@ant-design/icons';
 import { jElement } from '@/public/utils';
 import Tag from '../tag';
-import './card.less';
+import './archive-card.less';
 
 
-function ArticleCard(props) {
+function ArchiveCard(props) {
 
     function readMore() {}
-
     function toPage() {}
 
     return (
-        <div id="article-card">
+        <div className="article-card" onClick={() => { readMore(props.id) }}>
             <div className="article-card-wrap">
-                <div
-                    className="article-cover"
-                    style={{ backgroundImage: 'url(' + props.cover + ')' }}
-                >
-                    <div className="article-title" onClick={() => readMore(props.id)}>
-                        <span>{ props.title }</span>
-                    </div>
+                <div className="article-title">
+                    <span>{ props.title }</span>
                 </div>
                 <div className="article-info">
                     <p className="time">
                         <CalendarOutlined className='iconfont' />发表于{ props.publish_time }
                     </p>
+                    
                     {
                         jElement(
                             <div style={{ display: 'flex' }}>
@@ -76,11 +70,9 @@ function ArticleCard(props) {
                         props.tags.length > 0
                     )
                 }
-                <div className="read-more" onClick={() => {readMore(props.id)}}>阅读全文 {'>>'}</div>
             </div>
         </div>
     )
 }
 
-export default ArticleCard;
-
+export default ArchiveCard;

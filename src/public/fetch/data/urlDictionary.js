@@ -1,5 +1,4 @@
 const baseUrl = `${process.env.REACT_APP_API_URL}/blog`;
-console.log(process.env.REACT_APP_API_URL);
 const urlDictionary = {
   blogArticleList: `${baseUrl}/article/list`, // 前台文章列表
   blogArticleDetail: `${baseUrl}/article/detail`, // 前台文章详情

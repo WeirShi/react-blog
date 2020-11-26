@@ -1,5 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
-import C from '@/store/provider';
+import React, {
+    // useContext,
+    useEffect, useState
+} from 'react';
+// import C from '@/store/provider';
 import NoData from '@/components/no-data';
 import noDataImg from '@/assets/images/no-data.svg';
 import Loading from '@/components/loading';
@@ -11,8 +14,8 @@ import { Pagination, message } from 'antd';
 
 
 function Home() {
-    const { screenWidth: width } = useContext(C);
-    console.log('client', width);
+    // const { screenWidth: width } = useContext(C);
+    // console.log('client', width);
     const [loading, setLoading] = useState(false);
     const [current, setCurrent] = useState(1);
     const [total, setTotal] = useState(1);
@@ -63,7 +66,7 @@ function Home() {
                                 defaultCurrent={current}
                                 total={total}
                                 showSizeChanger={false}
-                                // size='small'
+                                size='small'
                                 onChange={onPaginationChange}
                             />
                         </div>,
