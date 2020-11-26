@@ -1,4 +1,4 @@
-
+import { useHistory } from 'react-router-dom';
 import { CalendarOutlined, FolderOutlined, EyeOutlined, HeartOutlined } from '@ant-design/icons';
 import { jElement } from '@/public/utils';
 import Tag from '../tag';
@@ -6,8 +6,10 @@ import './card.less';
 
 
 function ArticleCard(props) {
-
-    function readMore() {}
+    const history = useHistory()
+    function readMore(id) {
+        history.push(`/blog/article/${id}`);
+    }
 
     function toPage() {}
 

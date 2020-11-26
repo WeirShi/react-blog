@@ -1,10 +1,10 @@
 import { TagOutlined } from '@ant-design/icons';
-import './index.less';
+import style from './index.module.less';
 
 function Tag(props) {
     return (
-        <div className="tag">
-            <TagOutlined className='iconfont' />
+        <div className={style.tag}>
+            <TagOutlined className={style.iconfont} />
             { props.name }
         </div>
     )
