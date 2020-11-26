@@ -1,6 +1,7 @@
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/googlecode.css';
+import '@/public/style/github-markdown.min.css';
 
 marked.setOptions({
     renderer: new marked.Renderer(),
