@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css';
 
-const FancyRoute = props => {
+const CustomRoute = props => {
     useState(nprogress.start());
     useEffect(() => {
         nprogress.done();
@@ -13,4 +13,4 @@ const FancyRoute = props => {
         <Route {...props} />
     );
 };
-export default FancyRoute;
+export default CustomRoute;
