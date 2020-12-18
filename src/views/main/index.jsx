@@ -215,7 +215,7 @@ function Main(props) {
             </Content>
             <Footer>
                 <div className="footer-wrap">
-                    <p>本站由 @Weir.Shi 创建 - © 2020.苏ICP备19022770号-1</p>
+                    <p>本站由 @Weir.Shi 创建 - © 2020.<a href="https://beian.miit.gov.cn/#/Integrated/index">苏ICP备19022770号-1</a></p>
                     <p>
                         <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">
                             <img alt="知识共享许可协议" style={{ borderWidth:0 }} src={licenseImg}/>
