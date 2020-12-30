@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
+import AsyncComponent from './asyncComponent';
 
-import Home from '@/views/home/index';
-import Category from '@/views/category/index';
-import Archive from '@/views/archive/index';
-import About from '@/views/about/index';
-import ArticleDetail from '@/views/article/index';
-import ArticleListWithCategory from '@/views/category/list';
+const Home = AsyncComponent(() => import('@/views/home'));
+const Category = AsyncComponent(() => import('@/views/category'));
+const Archive = AsyncComponent(() => import('@/views/archive'));
+const About = AsyncComponent(() => import('@/views/about'));
+const ArticleDetail = AsyncComponent(() => import('@/views/article'));
+const ArticleListWithCategory = AsyncComponent(() => import('@/views/category/list'));
 
 
 export const Routes = () => 
